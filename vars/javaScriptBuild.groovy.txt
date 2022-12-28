@@ -1,0 +1,13 @@
+import myOrg.NpmTools
+import myOrg.Utils
+
+def call(body) {
+    node('master') {
+        def utils = new Utils(this)
+        utils.checkoutSCM()
+        
+        def npmTools = new NpmTools(this)
+        npmTools.install()
+        npmTools.build()
+    }
+}
